@@ -450,8 +450,8 @@ h1, h2, h3, h4, h5, h6 {
 --------------------------------------------------------------*/
 #hero {
   width: 100%;
-  height: 90vh;
-  background: url("../img/hero-bg.jpg") top center;
+  height: 55vh;
+  /*background: url("../img/hero-bg.jpg") top center;*/
   background-size: cover;
   margin-bottom: -200px;
 }
@@ -924,6 +924,7 @@ section {
   border: 1px solid #d5e1ed;
   padding: 80px 20px;
   transition: all ease-in-out 0.3s;
+  margin-top: 32px;
 }
 
 .services .icon-box .icon {
