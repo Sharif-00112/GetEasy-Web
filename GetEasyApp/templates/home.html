@@ -3,19 +3,18 @@
     <!-- ======= Hero Section ======= -->
     {% for data in home_details %}
         <section id="hero" class="d-flex align-items-center"
-                 style="background:url('/media/{{ data.image }}') top center;">
+                 style="background:url('/media/{{ data.image_field }}') top center !important;">
             <div class="container" style="margin-top:60px;">
                 <h1 style="color:white">Welcome to GetEasy Web</h1>
-                <h2 style="color:white">{{ data.main_title }}</h2>
+                <h6 style="color:white">{{ data.main_title }}</h6>
                 <a href="#services" class="btn-get-started scrollto">View All Services</a>
             </div>
         </section><!-- End Hero -->
         <!-- ======= Services Section ======= -->
         <section id="services" class="services">
         <div class="container">
-
         <div class="section-title">
-            <h2 style="color:white">Services</h2>
+            <h2 style="color:white; margin-top: 34px;">Services</h2>
             <p style="color:white">Here are few services</p>
         </div>
         <div class="row">
@@ -23,15 +22,15 @@
                 {% for service in services_all %}
                     <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
                         <div class="icon-box">
-                            <div class="icon">
-                                <div>
-                                    <img style="height: 150px; width: 250px;margin-bottom:54px"
-                                         src="/media/{{ service.image }}">
-                                </div>
+                            <div class="">
+                                <img style="width: 100%;height: 160px;object-fit: contain;margin-top:-54px;"
+                                     src="/media/{{ service.image }}">
                             </div>
+                            <br>
                             <h4><a href="">{{ service.title }}</a></h4>
-                            <p>{{ service.short_desc }}</p>
-                            <a href="" class="btn btn-outline-success">Get this Service</a>
+                            <p>{% autoescape off %}{{ service.short_desc|truncatechars:150 }}{% endautoescape %}</p>
+                            <a href="{% url 'getservice' service.id %}" class="btn btn-dark mt-4" style="background: #0f5132">Get this
+                                Service</a>
                         </div>
                     </div>
                 {% endfor %}

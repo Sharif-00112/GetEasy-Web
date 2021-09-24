@@ -7,14 +7,15 @@ from django.urls import path
 
 from GetEasyApp.models import General, Services, GetService
 
-admin.site.site_header = "GetEasyWeb Adminstration"
+admin.site.site_header = "GetEasyWeb Administration"
+admin.site.site_title = "GetEasyWeb"
 
 admin.site.register(General)
 admin.site.register(Services)
 
 
 class GetServiceAdmin(admin.ModelAdmin):
-    list_display = ['service','client_name', 'phone_no', 'district']
+    list_display = ['service', 'client_name', 'phone_no', 'district']
     change_list_template = "admin/service_response.html"
 
     def get_urls(self):
