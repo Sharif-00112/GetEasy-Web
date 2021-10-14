@@ -2,3 +2,4 @@
 ../.idea
 .idea
 media
+__pycache__
