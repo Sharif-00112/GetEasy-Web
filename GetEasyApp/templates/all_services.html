@@ -8,30 +8,25 @@
                 <p style="color:white">Here are few services</p>
             </div>
             <div class="row">
-                {% if services_all %}
-                    {% for service in services_all %}
-                        <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-                            <div class="icon-box">
-                                <a href="{% url 'service_details' service.id %}">
-                                    <img style="height: 300px; width: 300px; object-fit: contain;margin-top:-54px;"
-                                         src="/media/{{ service.image }}">
-                                </a>
-                                <br>
-                                <h4><a href="{% url 'service_details' service.id %}">{{ service.title }}</a></h4>
-                                <p>{% autoescape off %}
-                                    {{ service.short_desc|truncatechars:100 }}{% endautoescape %}</p>
-                                <p style="margin-bottom:6px;">
-                                    <a href="{% url 'getservice' service.id %}" class="btn btn-dark mt-4"
-                                       style="background: #0f5132">Get this
-                                        Service</a>
-                                </p>
-
-                            </div>
+                {% for service in services_all %}
+                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
+                        <div class="icon-box">
+                            <a href="{% url 'service_details' service.id %}">
+                                <img style="height: 300px; width: 300px; object-fit: contain;margin-top:-54px;"
+                                     src="/media/{{ service.image }}">
+                            </a>
+                            <br>
+                            <h4><a href="{% url 'service_details' service.id %}">{{ service.title }}</a></h4>
+                            <p>{% autoescape off %}
+                                {{ service.short_desc|truncatechars:100 }}{% endautoescape %}</p>
+                            <p style="margin-bottom:6px;">
+                                <a href="{% url 'getservice' service.id %}" class="btn btn-dark mt-4"
+                                   style="background: #0f5132">Get this
+                                    Service</a>
+                            </p>
                         </div>
-                    {% endfor %}
-                {% else %}
-                    <div>No Services this moment</div>
-                {% endif %}
+                    </div>
+                {% endfor %}
             </div>
         </div>
     </section><!-- End Services Section -->
