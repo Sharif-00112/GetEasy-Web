@@ -16,7 +16,7 @@ admin.site.register(Services)
 
 class GetServiceAdmin(admin.ModelAdmin):
     list_display = ['service', 'client_name', 'phone_no', 'district']
-    change_list_template = "admin/service_response.html"
+    # change_list_template = "admin/service_response.html"
 
     def get_urls(self):
         urls = super().get_urls()

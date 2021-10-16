@@ -1,0 +1,51 @@
+{% extends 'client/base.html' %}
+
+{% block content %}
+
+    <!-- ======= Departments Section ======= -->
+    <section id="departments" class="departments">
+        <div class="container">
+
+            <div class="section-title" style="padding-top: 74px;">
+                <h2>Service Details</h2>
+                <p>{% autoescape off %}{{ service.short_desc }}{% endautoescape %}</p>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-3">
+                    <ul class="nav nav-tabs flex-column">
+                        <li class="nav-item">
+                            <a class="nav-link active show" data-bs-toggle="tab" href="#tab-1">
+                                <img style="width: 100%;height: 160px;object-fit: contain;margin-top:-20px;"
+                                     src="/media/{{ service.image }}">
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-9 mt-4 mt-lg-0">
+                    <div class="tab-content">
+                        <div class="tab-pane active show" id="tab-1">
+                            <div class="row">
+                                <div class="col-lg-8 details order-2 order-lg-1">
+                                    <h3>{{ service.title }}<br>
+                                    <p style="font-size: 15px;">{{ service.subtitle }}</p></h3>
+                                    <p class="fst-italic">
+                                        {% autoescape off %}{{ service.short_desc }}{% endautoescape %}</p>
+                                    <p>{% autoescape off %}{{ service.details }}{% endautoescape %}</p>
+                                <h3> Required Documents</h3>
+                                <p>{% autoescape off %}{{ service.required_doc }}{% endautoescape %}</p>
+                                </div>
+                                <div class="col-lg-4 text-center order-1 order-lg-2">
+                                    <p style="font-weight: bolder; font-size: large; color: #0f5132"><u>Packages</u></p>
+                                    <p>{% autoescape off %}{{ service.packages }}{% endautoescape %}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section><!-- End Departments Section -->
+
+{% endblock %}

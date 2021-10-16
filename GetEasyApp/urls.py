@@ -5,4 +5,6 @@ from GetEasyApp import views
 urlpatterns = [
     path('', views.home, name="home"),
     path('getservice/<str:sid>/', views.getservices, name='getservice'),
+    path('all_services/', views.all_services, name="all_services"),
+    path('service_details/<str:sid>/', views.service_details, name="service_details")
 ]

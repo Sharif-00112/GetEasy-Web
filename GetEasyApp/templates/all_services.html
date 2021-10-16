@@ -1,20 +1,10 @@
 {% extends 'client/base.html' %}
-{% block content %}
-    <!-- ======= Hero Section ======= -->
 
-    <section id="hero" class="d-flex align-items-center"
-             style="background:url('/media/{{ image_field }}') top center !important;">
-        <div class="container" style="margin-top:60px;">
-            <h1 style="color:white">Welcome to GetEasy Web</h1>
-            <h6 style="color:white">{{ main_title }}</h6>
-            <a href="{% url 'all_services' %}" class="btn-get-started scrollto">View All Services</a>
-        </div>
-    </section><!-- End Hero -->
-    <!-- ======= Services Section ======= -->
+{% block content %}
     <section id="services" class="services">
         <div class="container">
             <div class="section-title">
-                <h2 style="margin-top: 174px;">Services</h2>
+                <h2 style="margin-top: 150px;"> All Services</h2>
                 <p style="color:white">Here are few services</p>
             </div>
             <div class="row">
@@ -45,22 +35,5 @@
             </div>
         </div>
     </section><!-- End Services Section -->
-    <!-- ======= About Section ======= -->
-    <section id="about" class="about">
-        <div class="container-fluid">
-            <div class="section-title">
-                <h2 style="margin-top: 34px;">About</h2>
-            </div>
-
-            <div class="row">
-                <div class="col-xl-12 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5"
-                     style="padding-left: 8rem!important;">
-
-                    <p>{% autoescape off %}{{ about }}{% endautoescape %}</p>
-                </div>
-            </div>
-
-        </div>
-    </section><!-- End About Section -->
 
 {% endblock %}

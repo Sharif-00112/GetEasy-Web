@@ -1,65 +1,104 @@
- <!-- ======= Footer ======= -->
-  <footer id="footer">
+<!-- ======= Footer ======= -->
+<footer id="footer">
 
     <div class="footer-top">
-      <div class="container">
-        <div class="row">
+        <div class="container">
+            <div class="row">
 
-          <div class="col-lg-4 col-md-6 footer-contact">
-            <h3>GetEasy</h3>
-            <p>
-              A108 Adam Street <br>
-              New York, NY 535022<br>
-              United States <br><br>
-              <strong>Phone:</strong> +1 5589 55488 55<br>
-              <strong>Email:</strong> info@example.com<br>
-            </p>
-          </div>
-          <div class="col-lg-4 col-md-6 footer-links">
-            <h4>Useful Links</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
-            </ul>
-          </div>
+                <div class="col-lg-4 col-md-6 footer-contact">
+                    <h3>GetEasy</h3>
+                    <p>
+                        A108 Adam Street <br>
+                        New York, NY 535022<br>
+                        United States <br><br>
+                        <strong>Phone:</strong> {{ request.session.phone }}<br>
+                        <strong>Email:</strong> {{ request.session.email }}<br>
+                    </p>
+                </div>
+                <div class="col-lg-4 col-md-6 footer-links">
+                    <h4>Useful Links</h4>
+                    <ul>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#services">Services</a></li>
+                        <li><i class="bx bx-chevron-right"></i>
+                            <a href="#" data-bs-toggle="modal" data-bs-target="#termsModal">
+                            Terms of service</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#" data-bs-toggle="modal" data-bs-target="#privacyModal">Privacy policy</a></li>
+                    </ul>
+                </div>
 
-          <div class="col-lg-4 col-md-6 footer-links">
-            <h4>Our Services</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
-            </ul>
-          </div>
+                <!-- Modal Terms and Contions -->
+                <div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-scrollable">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="termsModalLabel">Terms and Conditions</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                {% autoescape off %}{{ terms }} {% endautoescape %}
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            <!-- Modal Privacy and policy -->
+                <div class="modal fade" id="privacyModal" tabindex="-1" aria-labelledby="privacyModalLabel"
+                     aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-scrollable">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="privacyModalLabel">Privacy and Policy</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                        aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                {% autoescape off %}{{ policy }} {% endautoescape %}
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-4 col-md-6 footer-links">
+                    <h4>Our Services</h4>
+                    <ul>
+                        {% for service in services_all %}
+                        <li><i class="bx bx-chevron-right"></i> <a href="{% url 'getservice' service.id %}">{{ service.title }}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
 
     <div class="container d-md-flex py-4">
 
-      <div class="me-md-auto text-center text-md-start">
-        <div class="copyright">
-          &copy; Copyright <strong><span>GetEasy</span></strong>. All Rights Reserved
+        <div class="me-md-auto text-center text-md-start">
+            <div class="copyright">
+                &copy; Copyright <strong><span>GetEasy</span></strong>. All Rights Reserved
+            </div>
+            <div class="credits">
+                <!-- All the links in the footer should remain intact. -->
+                <!-- You can delete the links only if you purchased the pro version. -->
+                <!-- Licensing information: https://bootstrapmade.com/license/ -->
+                <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/medilab-free-medical-bootstrap-theme/ -->
+                Developed by <a href="#">KS</a>
+            </div>
         </div>
-        <div class="credits">
-          <!-- All the links in the footer should remain intact. -->
-          <!-- You can delete the links only if you purchased the pro version. -->
-          <!-- Licensing information: https://bootstrapmade.com/license/ -->
-          <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/medilab-free-medical-bootstrap-theme/ -->
-          Developed by <a href="#">KS</a>
+        <div class="social-links text-center text-md-right pt-3 pt-md-0">
+            <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+            <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+            <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+            <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+            <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
         </div>
-      </div>
-      <div class="social-links text-center text-md-right pt-3 pt-md-0">
-        <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-        <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-        <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-        <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-      </div>
     </div>
-  </footer><!-- End Footer -->
+</footer><!-- End Footer -->

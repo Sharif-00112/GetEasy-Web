@@ -21,6 +21,8 @@ class General(models.Model):
                                    validators=[FileExtensionValidator(
                                        allowed_extensions=['png', 'jpg', 'jpeg'])])
     last_author = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+    phone = models.CharField(max_length=20, verbose_name="Company official Mobile/ Phone number")
+    email = models.EmailField(verbose_name="Company official email")
 
     def save(self, **kwargs):
         self.pk = self.id = 1
