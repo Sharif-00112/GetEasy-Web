@@ -20,7 +20,7 @@
             <div class="row justify-content-center">
                 {% if services_all %}
                     {% for service in services_all %}
-                        <div class="col-4 mt-3 mb-3">
+                        <div class="col-lg-4 col-md-6 col-sm-12 mt-3 mb-3">
                             <div class="card shadow text-center">
                                 <a href="{% url 'service_details' service.id %}">
                                     <img class="mt-2" style="height: 300px; width: 300px; object-fit: contain;"
