@@ -1,7 +1,7 @@
 {% extends 'client/base.html' %}
 
 {% block content %}
-    <section class="services">
+    <section>
         <div class="container">
             <div class="section-title">
                 <h2 style="margin-top: 150px;"> All Services</h2>
@@ -38,5 +38,16 @@
             </div>
         </div>
     </section><!-- End Services Section -->
+    <style>
+        .card {
+            transition: border-color 1s, box-shadow 0.5s, background-color 1s;
+        }
+
+        .card:hover {
+            border-color: rgba(13, 110, 253, 0.7);
+            background: #d0e0fa;
+            box-shadow: 0px 0px 10px 2px rgba(13, 110, 253, 0.6);
+        }
+    </style>
 
 {% endblock %}
