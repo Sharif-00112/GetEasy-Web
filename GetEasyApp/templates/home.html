@@ -17,25 +17,26 @@
                 <h2 style="margin-top: 150px;">Services</h2>
                 <p style="margin-bottom: 10px;">Here are few services</p>
             </div>
-            <div class="row">
+            <div class="row justify-content-center">
                 {% if services_all %}
                     {% for service in services_all %}
-                        <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-                            <div class="icon-box">
+                        <div class="col-4 mt-3 mb-3">
+                            <div class="card shadow text-center">
                                 <a href="{% url 'service_details' service.id %}">
-                                    <img style="height: 300px; width: 300px; object-fit: contain;margin-top:-54px;"
+                                    <img class="mt-2" style="height: 300px; width: 300px; object-fit: contain;"
                                          src="/media/{{ service.image }}">
                                 </a>
-                                <br>
-                                <h4><a href="{% url 'service_details' service.id %}">{{ service.title }}</a></h4>
-                                <p>{% autoescape off %}
-                                    {{ service.short_desc|truncatechars:100 }}{% endautoescape %}</p>
-                                <p style="margin-bottom:6px;">
-                                    <a href="{% url 'getservice' service.id %}" class="btn btn-dark mt-4"
-                                       style="background: #0f5132">Get this
+                                <div class="card-body">
+                                    <h5 class="card-title"><a
+                                            href="{% url 'service_details' service.id %}">{{ service.title }}</a></h5>
+                                    <p class="card-text">
+                                        {% autoescape off %}
+                                            {{ service.short_desc|truncatechars:100 }}{% endautoescape %}
+                                    </p>
+                                    <a href="{% url 'getservice' service.id %}" class="btn btn-outline-primary mt-4"
+                                       >Get this
                                         Service</a>
-                                </p>
-
+                                </div>
                             </div>
                         </div>
                     {% endfor %}
@@ -57,8 +58,17 @@
                     <p>{% autoescape off %}{{ about }}{% endautoescape %}</p>
                 </div>
             </div>
-
         </div>
     </section><!-- End About Section -->
+    <style>
+        .card {
+            transition: border-color 1s, box-shadow 0.5s, background-color 1s;
+        }
 
+        .card:hover {
+            border-color: rgba(13, 110, 253, 0.7);
+            background: #d0e0fa;
+            box-shadow: 0px 0px 10px 2px rgba(13, 110, 253, 0.6);
+        }
+    </style>
 {% endblock %}

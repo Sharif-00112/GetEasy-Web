@@ -7,26 +7,32 @@
                 <h2 style="margin-top: 150px;"> All Services</h2>
                 <p style="color:white">Here are few services</p>
             </div>
-            <div class="row">
-                {% for service in services_all %}
-                    <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
-                        <div class="icon-box">
-                            <a href="{% url 'service_details' service.id %}">
-                                <img style="height: 300px; width: 300px; object-fit: contain;margin-top:-54px;"
-                                     src="/media/{{ service.image }}">
-                            </a>
-                            <br>
-                            <h4><a href="{% url 'service_details' service.id %}">{{ service.title }}</a></h4>
-                            <p>{% autoescape off %}
-                                {{ service.short_desc|truncatechars:100 }}{% endautoescape %}</p>
-                            <p style="margin-bottom:6px;">
-                                <a href="{% url 'getservice' service.id %}" class="btn btn-dark mt-4"
-                                   style="background: #0f5132">Get this
-                                    Service</a>
-                            </p>
+            <div class="row justify-content-center">
+                {% if services_all %}
+                    {% for service in services_all %}
+                        <div class="col-4 mt-3 mb-3">
+                            <div class="card shadow text-center">
+                                <a href="{% url 'service_details' service.id %}">
+                                    <img class="mt-2" style="height: 300px; width: 300px; object-fit: contain;"
+                                         src="/media/{{ service.image }}">
+                                </a>
+                                <div class="card-body">
+                                    <h5 class="card-title"><a
+                                            href="{% url 'service_details' service.id %}">{{ service.title }}</a></h5>
+                                    <p class="card-text">
+                                        {% autoescape off %}
+                                            {{ service.short_desc|truncatechars:100 }}{% endautoescape %}
+                                    </p>
+                                    <a href="{% url 'getservice' service.id %}" class="btn btn-outline-primary mt-4"
+                                       >Get this
+                                        Service</a>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                {% endfor %}
+                    {% endfor %}
+                {% else %}
+                    <div>No Services this moment</div>
+                {% endif %}
             </div>
         </div>
     </section><!-- End Services Section -->
