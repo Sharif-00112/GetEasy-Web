@@ -1,3 +1,4 @@
+
 <!-- ======= Footer ======= -->
 <footer id="footer">
 
@@ -22,8 +23,10 @@
                         <li><i class="bx bx-chevron-right"></i> <a href="#services">Services</a></li>
                         <li><i class="bx bx-chevron-right"></i>
                             <a href="#" data-bs-toggle="modal" data-bs-target="#termsModal">
-                            Terms of service</a></li>
-                        <li><i class="bx bx-chevron-right"></i> <a href="#" data-bs-toggle="modal" data-bs-target="#privacyModal">Privacy policy</a></li>
+                                Terms of service</a></li>
+                        <li><i class="bx bx-chevron-right"></i> <a href="#" data-bs-toggle="modal"
+                                                                   data-bs-target="#privacyModal">Privacy policy</a>
+                        </li>
                     </ul>
                 </div>
 
@@ -47,7 +50,7 @@
                     </div>
                 </div>
 
-            <!-- Modal Privacy and policy -->
+                <!-- Modal Privacy and policy -->
                 <div class="modal fade" id="privacyModal" tabindex="-1" aria-labelledby="privacyModalLabel"
                      aria-hidden="true">
                     <div class="modal-dialog modal-dialog-scrollable">
@@ -71,7 +74,8 @@
                     <h4>Our Services</h4>
                     <ul>
                         {% for service in services_all %}
-                        <li><i class="bx bx-chevron-right"></i> <a href="{% url 'getservice' service.id %}">{{ service.title }}</a></li>
+                            <li><i class="bx bx-chevron-right"></i> <a
+                                    href="{% url 'getservice' service.id %}">{{ service.title }}</a></li>
                         {% endfor %}
                     </ul>
                 </div>
