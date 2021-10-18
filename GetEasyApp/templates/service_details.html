@@ -9,6 +9,10 @@
             <div class="section-title" style="padding-top: 74px;">
                 <h2>Service Details</h2>
                 <p>{% autoescape off %}{{ service.short_desc }}{% endautoescape %}</p>
+                <a href="{% url 'getservice' service.id %}"
+                   class="btn btn-outline-success mt-4">Get
+                    this
+                    Service</a>
             </div>
 
             <div class="row">
@@ -28,12 +32,12 @@
                             <div class="row">
                                 <div class="col-lg-8 details order-2 order-lg-1">
                                     <h3>{{ service.title }}<br>
-                                    <p style="font-size: 15px;">{{ service.subtitle }}</p></h3>
+                                        <p style="font-size: 15px;">{{ service.subtitle }}</p></h3>
                                     <p class="fst-italic">
                                         {% autoescape off %}{{ service.short_desc }}{% endautoescape %}</p>
                                     <p>{% autoescape off %}{{ service.details }}{% endautoescape %}</p>
-                                <h3> Required Documents</h3>
-                                <p>{% autoescape off %}{{ service.required_doc }}{% endautoescape %}</p>
+                                    <h3> Required Documents</h3>
+                                    <p>{% autoescape off %}{{ service.required_doc }}{% endautoescape %}</p>
                                 </div>
                                 <div class="col-lg-4 text-center order-1 order-lg-2">
                                     <p style="font-weight: bolder; font-size: large; color: #0f5132"><u>Packages</u></p>
