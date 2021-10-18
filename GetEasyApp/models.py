@@ -44,7 +44,8 @@ HOME_CHOICES = (
 class Services(models.Model):
     title = models.CharField(max_length=300, verbose_name="Enter a service title")
     subtitle = models.CharField(max_length=300, verbose_name="Short Title")
-    short_desc = RichTextField(verbose_name="Short Description")
+    short_desc = models.TextField(max_length=300, verbose_name="Short Description",
+                                  help_text="Not more than 300 character")
     details = RichTextField(verbose_name="Enter a details of your service")
     required_doc = RichTextField(verbose_name="Required Documents Information of this service")
     created_time = datetime.datetime.now()
