@@ -28,8 +28,8 @@
                 <p style="margin-bottom: 10px;">Here are few services</p>
             </div>
             <div class="row justify-content-center">
-                {% if services_all %}
-                    {% for service in services_all %}
+                {% if services_all_yes %}
+                    {% for service in services_all_yes %}
                         <div class="col-lg-4 col-md-6 col-sm-12 mt-3 mb-3">
                             <div class="card shadow text-center" style="height: 550px">
                                 <a href="{% url 'service_details' service.id %}">

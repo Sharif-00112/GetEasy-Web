@@ -49,7 +49,7 @@
                                     <div class="col-12  mb-3">
                                         <select class="form-control" name="service" id="service">
                                             <option class="text-danger" disabled selected>Select a Service</option>
-                                            {% for s in services_all %}
+                                            {% for s in services_all_yes %}
                                                 <option value="{{ s.id }}">{{ s.title }}</option>
                                             {% endfor %}
                                         </select>

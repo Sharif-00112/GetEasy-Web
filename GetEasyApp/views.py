@@ -22,7 +22,7 @@ def home(request):
     context['instagram_link'] = General.objects.get(id=1).instagram_link
     context['linkedin_link'] = General.objects.get(id=1).linkedin_link
     context['skype_link'] = General.objects.get(id=1).skype_link
-    context['services_all'] = Services.objects.all().order_by('service_sequence').filter(home_shown="yes")
+    context['services_all_yes'] = Services.objects.all().order_by('service_sequence').filter(home_shown="yes")
 
     request.session['email'] = context['email']
     request.session['phone'] = context['phone']
@@ -68,6 +68,7 @@ def all_services(request):
     page = 'all_services'
 
     context = {}
+    context['services_all_yes'] = Services.objects.all().order_by('service_sequence').filter(home_shown="yes")
     context['services_all'] = Services.objects.all().order_by('service_sequence')
     return render(request, page + ".html", context)
 
