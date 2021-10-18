@@ -11,8 +11,11 @@ from django.db import models
 
 
 class General(models.Model):
-    main_title = models.CharField(max_length=300, verbose_name="Advertisement Title")
-    about = RichTextField(verbose_name="Site About")
+    main_title = models.CharField(max_length=300, verbose_name="Main Title")
+    advertise_title = models.CharField(max_length=300, verbose_name="Advertisement Title")
+    short_about = models.TextField(max_length=300, verbose_name="Site Short About",
+                                   help_text="Not more than 300 character")
+    long_about = RichTextField(verbose_name="Site Long About")
     last_edited = datetime.datetime.now()
     terms = RichTextField(verbose_name="Enter terms and conditions")
     policy = RichTextField(verbose_name="Enter policy")
@@ -23,6 +26,16 @@ class General(models.Model):
     last_author = models.ForeignKey(User, on_delete=models.DO_NOTHING)
     phone = models.CharField(max_length=20, verbose_name="Company official Mobile/ Phone number")
     email = models.EmailField(verbose_name="Company official email")
+    address = models.CharField(max_length=300, verbose_name="Full Address ")
+    facebook_link = models.CharField(max_length=300, verbose_name="Facebook Link ",
+                                     help_text="remove 'http://' before your web address, Example: example.com")
+    whatsapp_link = models.CharField(max_length=300, verbose_name="Whatsapp Link/Mobile number")
+    instagram_link = models.CharField(max_length=300, verbose_name="Instagram Link",
+                                      help_text="remove 'http://' before your web address, Example: example.com")
+    linkedin_link = models.CharField(max_length=300, verbose_name="Linkedin Link",
+                                     help_text="remove 'http://' before your web address, Example: example.com")
+    skype_link = models.CharField(max_length=300, verbose_name="Skype Link",
+                                  help_text="remove 'http://' before your web address, Example: example.com")
 
     def save(self, **kwargs):
         self.pk = self.id = 1

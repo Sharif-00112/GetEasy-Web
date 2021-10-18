@@ -8,6 +8,16 @@
             <h1 style="color:white">Welcome to GetEasy Web</h1>
             <h6 style="color:white">{{ main_title }}</h6>
             <a href="{% url 'all_services' %}" class="btn-get-started scrollto">View All Services</a>
+            {% if messages %}
+                {% for message in messages %}
+                    <div id="message_container"
+                         class="alert alert-{{ message.tags }} alert-dismissible text-center mt-3"
+                         role="alert">
+                        <strong>{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Error{% else %}
+                            {{ message.tags|title }}{% endif %}!</strong> {{ message }}
+                    </div>
+                {% endfor %}
+            {% endif %}
         </div>
     </section><!-- End Hero -->
     <!-- ======= Services Section ======= -->
@@ -56,11 +66,16 @@
             </div>
             <div class="row">
                 <div class="col-xl-12 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5"
-                     style="padding-left: 3rem!important;padding-right: 3rem!important; text-align: justify;margin-top:-75px;">
-                    <p>{% autoescape off %}{{ about }}{% endautoescape %}</p>
+                     style="padding-left: 5.5rem!important;padding-right: 5.5rem!important; text-align: justify;margin-top:-75px;">
+                    <p>{% autoescape off %}{{ short_about }}{% endautoescape %}</p>
                 </div>
             </div>
         </div>
+        {#        <div id="fb-root"></div>#}
+        {##}
+        {#        <!-- Your Chat Plugin code -->#}
+        {#        <div id="fb-customer-chat" class="fb-customerchat">#}
+        {#        </div>#}
     </section><!-- End About Section -->
     <style>
         .card {
@@ -72,5 +87,32 @@
             background: #d0e0fa;
             box-shadow: 0px 0px 10px 2px rgba(13, 110, 253, 0.6);
         }
+
     </style>
+    <script>
+        var message_ele = document.getElementById("message_container");
+        setTimeout(function () {
+            message_ele.style.display = "none";
+        }, 10000);
+    </script>
+    {#    <script>#}
+    {#      var chatbox = document.getElementById('fb-customer-chat');#}
+    {#      chatbox.setAttribute("page_id", "107539754800007");#}
+    {#      chatbox.setAttribute("attribution", "biz_inbox");#}
+    {##}
+    {#      window.fbAsyncInit = function() {#}
+    {#        FB.init({#}
+    {#          xfbml            : true,#}
+    {#          version          : 'v12.0'#}
+    {#        });#}
+    {#      };#}
+    {##}
+    {#      (function(d, s, id) {#}
+    {#        var js, fjs = d.getElementsByTagName(s)[0];#}
+    {#        if (d.getElementById(id)) return;#}
+    {#        js = d.createElement(s); js.id = id;#}
+    {#        js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';#}
+    {#        fjs.parentNode.insertBefore(js, fjs);#}
+    {#      }(document, 'script', 'facebook-jssdk'));#}
+    {#    </script>#}
 {% endblock %}

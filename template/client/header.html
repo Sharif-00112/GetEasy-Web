@@ -1,33 +1,100 @@
 {% load static %}
 <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top">
+<header id="header" class="fixed-top">
     <div class="container d-flex align-items-center">
 
-      <h1 class="logo me-auto"><a href="{% url 'home' %}"><img src="{% static 'assets/img/Landscape.png' %}"></a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+        <h1 class="logo me-auto"><a href="{% url 'home' %}"><img src="{% static 'assets/img/Landscape.png' %}"></a></h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
-      <nav id="navbar" class="navbar order-last order-lg-0">
-        <ul>
-          <li><a class="nav-link scrollto" href="{% url 'home' %}">Home</a></li>
-          <li><a class="nav-link scrollto" href="{% url 'home' %}#about">About</a></li>
-          <li><a class="nav-link scrollto" href="{% url 'home' %}#services">Current Services</a></li>
-            <li><a class="nav-link scrollto {% if 'all_services' in request.path %} active {% endif %}" href="{% url 'all_services' %}">All Services</a></li>
-{#          <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>#}
-{#            <ul>#}
-{#              <li><a href="#">Drop Down 1</a></li>#}
-{#              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>#}
-{#                <ul>#}
-{#                  <li><a href="#">Deep Drop Down 1</a></li>#}
-{#                </ul>#}
-{#              </li>#}
-{#            </ul>#}
-{#          </li>#}
-        </ul>
-        <i class="bi bi-list mobile-nav-toggle"></i>
-      </nav><!-- .navbar -->
+        <nav id="navbar" class="navbar order-last order-lg-0">
+            <ul>
+                <li><a class="nav-link scrollto" href="{% url 'home' %}">Home</a></li>
+                <li><a class="nav-link scrollto" href="{% url 'home' %}#about">About</a></li>
+                <li><a class="nav-link scrollto" href="{% url 'home' %}#services">Current Services</a></li>
+                <li><a class="nav-link scrollto {% if 'all_services' in request.path %} active {% endif %}"
+                       href="{% url 'all_services' %}">All Services</a></li>
+                {#          <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>#}
+                {#            <ul>#}
+                {#              <li><a href="#">Drop Down 1</a></li>#}
+                {#              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>#}
+                {#                <ul>#}
+                {#                  <li><a href="#">Deep Drop Down 1</a></li>#}
+                {#                </ul>#}
+                {#              </li>#}
+                {#            </ul>#}
+                {#          </li>#}
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav><!-- .navbar -->
 
-      <a href="#appointment" class="appointment-btn scrollto"><span class="d-none d-md-inline">Make an</span> Appointment</a>
+        <a href="#" data-bs-toggle="modal" data-bs-target="#makeanappointmentModal"
+           class="appointment-btn scrollto"><span class="d-none d-md-inline">Make an</span> Appointment</a>
+
+        <!-- Modal Terms and Contions -->
+        <div class="modal fade" id="makeanappointmentModal" tabindex="-1" aria-labelledby="makeanappointmentModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog modal-dialog-scrollable">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="makeanappointmentModalLabel">Make an Appointment</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div>
+                            <form action="{% url 'make_appointment' %}" method="post" role="form">
+                                {% csrf_token %}
+                                <div class="row">
+                                    <div class="col-12  mb-3">
+                                        <select class="form-control" name="service" id="service">
+                                            <option class="text-danger" disabled selected>Select a Service</option>
+                                            {% for s in services_all %}
+                                                <option value="{{ s.id }}">{{ s.title }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                    <div class="col-12 form-group mb-3">
+                                        <input type="name" class="form-control" name="name" id="name"
+                                               placeholder="Your Full Name"
+                                               data-rule="minlen:3" data-msg="Please enter name correctly">
+                                        <div class="validate"></div>
+                                    </div>
+                                    <div class="col-12 form-group mb-3">
+                                        <input type="tel" class="form-control" name="phone" id="phone"
+                                               placeholder="Your Mobile Number"
+                                               data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                                        <div class="validate"></div>
+                                    </div>
+                                    <div class="col-12 form-group mb-3">
+                                        <input type="district" class="form-control" name="district" id="district"
+                                               placeholder="Your District Name"
+                                               data-rule="minlen:3" data-msg="Please enter district name correctly">
+                                        <div class="validate"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group mt-3">
+                                <textarea class="form-control" name="message" rows="5"
+                                          placeholder="Message (Optional)"></textarea>
+                                    <div class="validate"></div>
+                                </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary mt-2">Submit</button>
+                        </form>
+
+                        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </div>
-  </header><!-- End Header -->
+
+    <style>
+        .modal-backdrop {
+            position: relative !important;
+        }
+    </style>
+</header><!-- End Header -->

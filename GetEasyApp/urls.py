@@ -6,5 +6,6 @@ urlpatterns = [
     path('', views.home, name="home"),
     path('getservice/<str:sid>/', views.getservices, name='getservice'),
     path('all_services/', views.all_services, name="all_services"),
-    path('service_details/<str:sid>/', views.service_details, name="service_details")
+    path('service_details/<str:sid>/', views.service_details, name="service_details"),
+    path('make_appointment/', views.make_appointment, name="make_appointment")
 ]

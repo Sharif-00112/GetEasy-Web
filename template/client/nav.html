@@ -5,11 +5,12 @@
         <i class="bi bi-envelope"></i> <a href="mailto:{{ request.session.email }}">{{ request.session.email }}</a>
         <i class="bi bi-phone"></i> {{ request.session.phone }}
       </div>
-      <div class="d-none d-lg-flex social-links align-items-center">
-        <a href="#" class="twitter"><i class="bi bi-twitter"></i></a>
-        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+      <div class="d-none d-lg-flex social-links align-items-center" style="font-size: 17px;">
+         <a href="callto:{{ request.session.whatsapp_link }}" class="whatsapp"><i class="bx bxl-whatsapp"></i></a>
+            <a href="http://{{ request.session.facebook_link }}" class="facebook"><i class="bx bxl-facebook"></i></a>
+            <a href="http://{{ request.session.instagram_link }}" class="instagram"><i class="bx bxl-instagram"></i></a>
+            <a href="http://{{ request.session.skype_link }}" class="google-plus"><i class="bx bxl-skype"></i></a>
+            <a href="http://{{ request.session.linkedin_link }}" class="linkedin"><i class="bx bxl-linkedin"></i></a>
       </div>
     </div>
   </div>
