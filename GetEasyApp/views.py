@@ -27,6 +27,7 @@ def home(request):
     request.session['email'] = context['email']
     request.session['phone'] = context['phone']
     request.session['address'] = context['address']
+    request.session['long_about'] = context['long_about']
     request.session['facebook_link'] = context['facebook_link']
     request.session['instagram_link'] = context['instagram_link']
     request.session['whatsapp_link'] = context['whatsapp_link']
