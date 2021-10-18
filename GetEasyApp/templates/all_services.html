@@ -1,7 +1,7 @@
 {% extends 'client/base.html' %}
 
 {% block content %}
-    <section>
+    <section class="services">
         <div class="container">
             <div class="section-title">
                 <h2 style="margin-top: 150px;"> All Services</h2>
@@ -10,27 +10,25 @@
             <div class="row justify-content-center">
                 {% if services_all %}
                     {% for service in services_all %}
-                        {% autoescape off %}
-                            <div class="col-lg-4 col-md-6 col-sm-12 mt-3 mb-3">
-                                <div class="card shadow text-center">
-                                    <a href="{% url 'service_details' service.id %}">
-                                        <img class="mt-2" style="height: 300px; width: 300px; object-fit: contain;"
-                                             src="/media/{{ service.image }}">
-                                    </a>
-                                    <div class="card-body">
-                                        <h5 class="card-title"><a
-                                                href="{% url 'service_details' service.id %}">{{ service.title }}</a>
-                                        </h5>
-                                        <p class="card-text">
-                                            {{ service.short_desc|truncatechars:100 }}
-                                        </p>
-                                        <a href="{% url 'getservice' service.id %}"
-                                           class="btn btn-outline-primary mt-4">Get
-                                            this service</a>
-                                    </div>
+                        <div class="col-lg-4 col-md-6 col-sm-12 mt-3 mb-3">
+                            <div class="card shadow text-center" style="height: 550px">
+                                <a href="{% url 'service_details' service.id %}">
+                                    <img class="mt-2" style="height: 300px; width: 300px; object-fit: contain;"
+                                         src="/media/{{ service.image }}">
+                                </a>
+                                <div class="card-body">
+                                    <h5 class="card-title"><a
+                                            href="{% url 'service_details' service.id %}">{{ service.title }}</a>
+                                    </h5>
+                                    <p class="card-text">
+                                        {{ service.short_desc|truncatechars:100 }}
+                                    </p>
+                                    <a href="{% url 'getservice' service.id %}"
+                                       class="btn btn-outline-primary mt-4">Get
+                                        this service</a>
                                 </div>
                             </div>
-                        {% endautoescape %}
+                        </div>
                     {% endfor %}
                 {% else %}
                     <div>No Services this moment</div>
