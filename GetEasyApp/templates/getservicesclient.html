@@ -23,29 +23,25 @@
                 {% endif %}
             </div>
 
-            <form action="." method="post" role="form">
+            <form action="." method="post" role="form" class="needs-validation">
                 {% csrf_token %}
                 <div class="row">
                     <div class="col-md-4 form-group mt-3 mt-md-0">
                         <input type="name" class="form-control" name="name" id="name" placeholder="Your Full Name"
-                               data-rule="minlen:3" data-msg="Please enter name correctly">
-                        <div class="validate"></div>
+                               data-rule="minlen:3" data-msg="Please enter name correctly" required>
                     </div>
                     <div class="col-md-4 form-group mt-3 mt-md-0">
                         <input type="tel" class="form-control" name="phone" id="phone" placeholder="Your Mobile Number"
-                               data-rule="minlen:4" data-msg="Please enter at least 4 chars">
-                        <div class="validate"></div>
+                               data-rule="minlen:4" data-msg="Please enter at least 4 chars" required>
                     </div>
                     <div class="col-md-4 form-group mt-3 mt-md-0">
                         <input type="district" class="form-control" name="district" id="district"
                                placeholder="Your District Name"
-                               data-rule="minlen:3" data-msg="Please enter district name correctly">
-                        <div class="validate"></div>
+                               data-rule="minlen:3" data-msg="Please enter district name correctly" required>
                     </div>
                 </div>
                 <div class="form-group mt-3">
                     <textarea class="form-control" name="message" rows="5" placeholder="Message (Optional)"></textarea>
-                    <div class="validate"></div>
                 </div>
                 <div class="text-center">
                     <button type="submit" class="btn btn-primary mt-2">Make an Appointment</button>

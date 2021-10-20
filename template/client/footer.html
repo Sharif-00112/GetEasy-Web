@@ -10,8 +10,8 @@
                     <p>
                         {{ request.session.address }}
                         <br><br>
-                        <strong>Phone:</strong> {{ request.session.phone }}<br>
-                        <strong>Email:</strong> {{ request.session.email }}<br>
+                        <strong>Phone:</strong><a href="callto:{{ request.session.phone }}">{{ request.session.phone }}</a><br>
+                        <strong>Email:</strong> <a href="mailto:{{ request.session.email }}">{{ request.session.email }}</a> <br>
                     </p>
                 </div>
                 <div class="col-lg-4 col-md-6 footer-links">
@@ -111,15 +111,14 @@
                 &copy; Copyright <strong><span>GetEasy</span></strong>. All Rights Reserved
             </div>
             <div class="credits">
-                Developed by <a href="#">ks</a>
+                Developed by <a href="https://kazishuvo.herokuapp.com/" target="_blank">KS</a>
             </div>
         </div>
         <div class="social-links text-center text-md-right pt-3 pt-md-0">
-            <a href="callto:{{ request.session.whatsapp_link }}" class="whatsapp"><i class="bx bxl-whatsapp"></i></a>
-            <a href="http://{{ request.session.facebook_link }}" class="facebook"><i class="bx bxl-facebook"></i></a>
-            <a href="http://{{ request.session.instagram_link }}" class="instagram"><i class="bx bxl-instagram"></i></a>
-            <a href="http://{{ request.session.skype_link }}" class="google-plus"><i class="bx bxl-skype"></i></a>
-            <a href="http://{{ request.session.linkedin_link }}" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+            <a href="sms:{{ request.session.whatsapp_link }}" class="whatsapp"><i class="bx bxl-whatsapp"></i></a>
+            <a href="http://{{ request.session.facebook_link }}" target="_blank" class="facebook"><i class="bx bxl-facebook"></i></a>
+            <a href="http://{{ request.session.instagram_link }}" target="_blank" class="instagram"><i class="bx bxl-instagram"></i></a>
+            <a href="http://{{ request.session.linkedin_link }}" target="_blank" class="linkedin"><i class="bx bxl-linkedin"></i></a>
         </div>
     </div>
 </footer><!-- End Footer -->

@@ -75,7 +75,7 @@ class Services(models.Model):
 
 
 class GetService(models.Model):
-    service = models.ForeignKey(Services, on_delete=models.DO_NOTHING, verbose_name="Select Service")
+    service = models.ForeignKey(Services, on_delete=models.DO_NOTHING, verbose_name="Select Service", null=False)
     client_name = models.CharField(max_length=300, verbose_name="Enter Your name")
     phone_no = models.CharField(max_length=300, verbose_name="Enter your phone number")
     district = models.CharField(max_length=300, verbose_name="Enter your district")

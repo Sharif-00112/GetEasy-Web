@@ -43,12 +43,12 @@
                     </div>
                     <div class="modal-body" style="background: #e4eaed">
                         <div>
-                            <form action="{% url 'make_appointment' %}" method="post" role="form">
+                            <form action="{% url 'make_appointment' %}" method="post" role="form" class="needs-validation">
                                 {% csrf_token %}
                                 <div class="row">
                                     <div class="col-12  mb-3">
-                                        <select class="form-control" name="service" id="service">
-                                            <option class="text-danger" disabled selected>Select a Service</option>
+                                        <select class="form-select" name="service" id="service" required>
+                                            <option selected disabled value="" class="text-danger">Select a Service</option>
                                             {% for s in services_all_yes %}
                                                 <option value="{{ s.id }}">{{ s.title }}</option>
                                             {% endfor %}
@@ -57,19 +57,19 @@
                                     <div class="col-12 form-group mb-3">
                                         <input type="name" class="form-control" name="name" id="name"
                                                placeholder="Your Full Name"
-                                               data-rule="minlen:3" data-msg="Please enter name correctly">
+                                               data-rule="minlen:3" data-msg="Please enter name correctly" required>
                                         <div class="validate"></div>
                                     </div>
                                     <div class="col-12 form-group mb-3">
                                         <input type="tel" class="form-control" name="phone" id="phone"
                                                placeholder="Your Mobile Number"
-                                               data-rule="minlen:4" data-msg="Please enter at least 4 chars">
+                                               data-rule="minlen:4" data-msg="Please enter at least 4 chars" required>
                                         <div class="validate"></div>
                                     </div>
                                     <div class="col-12 form-group mb-3">
                                         <input type="district" class="form-control" name="district" id="district"
                                                placeholder="Your District Name"
-                                               data-rule="minlen:3" data-msg="Please enter district name correctly">
+                                               data-rule="minlen:3" data-msg="Please enter district name correctly" required>
                                         <div class="validate"></div>
                                     </div>
                                 </div>

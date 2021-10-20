@@ -1,3 +1,4 @@
+from django.core.cache import cache
 from django.shortcuts import render, redirect
 from django.contrib import messages
 # Create your views here.
@@ -33,6 +34,8 @@ def home(request):
     request.session['whatsapp_link'] = context['whatsapp_link']
     request.session['skype_link'] = context['skype_link']
     request.session['linkedin_link'] = context['linkedin_link']
+    request.session['terms'] = context['terms']
+    request.session['policy'] = context['policy']
 
     return render(request, page + ".html", context)
 
@@ -79,7 +82,7 @@ def service_details(request, sid):
 
     context = {}
     context['service'] = Services.objects.get(id=sid)
-    context['services_all'] = Services.objects.all().order_by('service_sequence')
+    context['services_all_yes'] = Services.objects.all().order_by('service_sequence').filter(home_shown="yes")
     return render(request, page + ".html", context)
 
 
