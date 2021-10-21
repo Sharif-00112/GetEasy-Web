@@ -2,7 +2,7 @@ from django.core.cache import cache
 from django.shortcuts import render, redirect
 from django.contrib import messages
 # Create your views here.
-from GetEasyApp.models import General, Services, GetService
+from GetEasyApp.models import General, Services, GetService, FAQ
 
 
 def home(request):
@@ -10,6 +10,7 @@ def home(request):
     context = {}
     context['home_details'] = General.objects.all()
     context['main_title'] = General.objects.get(id=1).main_title
+    context['advertise_title'] = General.objects.get(id=1).advertise_title
     context['image_field'] = General.objects.get(id=1).image_field
     context['short_about'] = General.objects.get(id=1).short_about
     context['long_about'] = General.objects.get(id=1).long_about
@@ -103,3 +104,11 @@ def make_appointment(request):
                                       "GetEasyWeb contact with you soon! Thanks for using GetEasyWeb.")
         return redirect('home')
     return redirect('home')
+
+
+def faq(request):
+    page = "faq"
+    context = {}
+    context['faq_all'] = FAQ.objects.all()
+
+    return render(request, page + ".html", context)

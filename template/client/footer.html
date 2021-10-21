@@ -12,7 +12,8 @@
                         <br><br>
                         <strong>Phone:</strong><a href="callto:{{ request.session.phone }}">{{ request.session.phone }}</a><br>
                         <strong>Email:</strong> <a href="mailto:{{ request.session.email }}">{{ request.session.email }}</a> <br>
-                    </p>
+                    </p><br>
+                    <a class="btn btn-outline-dark btn-sm" href="{% url 'faq' %}">All F.A.Q <i class="fa fa-arrow-circle-right"></i> </a>
                 </div>
                 <div class="col-lg-4 col-md-6 footer-links">
                     <h4>Useful Links</h4>

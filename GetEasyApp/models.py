@@ -74,12 +74,20 @@ class Services(models.Model):
         return str(self.service_sequence) + " " + self.title
 
 
+GET_SERVICE_CHOICES = (
+    ('Pending', 'Pending'),
+    ('Completed', 'Completed')
+)
+
+
 class GetService(models.Model):
     service = models.ForeignKey(Services, on_delete=models.DO_NOTHING, verbose_name="Select Service", null=False)
     client_name = models.CharField(max_length=300, verbose_name="Enter Your name")
     phone_no = models.CharField(max_length=300, verbose_name="Enter your phone number")
     district = models.CharField(max_length=300, verbose_name="Enter your district")
     message = RichTextField(verbose_name="Enter your message (if any)", null=True, blank=True)
+    ctime = models.DateTimeField()
+    status = models.CharField(max_length=100, verbose_name="Services Status", choices=GET_SERVICE_CHOICES)
 
     def __str__(self):
         return self.service.title + " --> " + self.client_name
@@ -87,3 +95,17 @@ class GetService(models.Model):
 
 class Contact(models.Model):
     pass
+
+
+class FAQ(models.Model):
+    segment_general = models.BooleanField(verbose_name="This is a General Segment ",
+                                          help_text=" If segment is General then Select the box.")
+    segment = models.ForeignKey(Services, verbose_name="Select Segment", on_delete=models.DO_NOTHING,
+                                help_text="If segment is general then leave it blank", null=True, blank=True)
+    question = RichTextField(verbose_name="Input Question")
+    answer = RichTextField(verbose_name="Input Answer")
+    home_shown = models.CharField(max_length=100, verbose_name="Is shown in home?", choices=HOME_CHOICES)
+    ctime = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.question

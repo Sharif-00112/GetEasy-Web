@@ -1,0 +1,36 @@
+{% extends 'client/base.html' %}
+
+{% block content %}
+    <section id="departments" class="departments">
+        <div class="container">
+            <div class="section-title" style="padding-top: 74px;">
+                <h2>Frequently Asked Questions</h2>
+                <p> Here All Services Frequently Asked Questions and Answers</p>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    {% for f in faq_all %}
+                        <div class="row">
+                            <div class="col-1" style="width: 1px!important;">
+                                <h4>{{ forloop.counter }}. </h4>
+                            </div>
+                            <div class="col-11">
+                                <h4>
+                                    <a class="" data-bs-toggle="collapse"
+                                       href="#collapseExample{{ f.id }}"
+                                       role="button" aria-expanded="True" aria-controls="collapseExample{{ f.id }}">
+                                        {% autoescape off %} {{ f.question }} {% endautoescape %}
+                                    </a></h4>
+                                <div class="collapse" id="collapseExample{{ f.id }}">
+                                    <div class="card card-body">
+                                        <h6>{% autoescape off %} {{ f.answer }} {% endautoescape %}</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}

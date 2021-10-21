@@ -14,16 +14,17 @@
                 <li><a class="nav-link scrollto" href="{% url 'home' %}#services">Current Services</a></li>
                 <li><a class="nav-link scrollto {% if 'all_services' in request.path %} active {% endif %}"
                        href="{% url 'all_services' %}">All Services</a></li>
-                {#          <li class="dropdown"><a href="#"><span>Drop Down</span> <i class="bi bi-chevron-down"></i></a>#}
-                {#            <ul>#}
-                {#              <li><a href="#">Drop Down 1</a></li>#}
-                {#              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>#}
-                {#                <ul>#}
-                {#                  <li><a href="#">Deep Drop Down 1</a></li>#}
-                {#                </ul>#}
-                {#              </li>#}
-                {#            </ul>#}
-                {#          </li>#}
+                <li class="dropdown"><a class="nav-link scrollto {% if 'faq' in request.path %} active {% endif %} " href="{% url 'home' %}#faq"><span>F.A.Q</span> <i
+                        class="bi bi-chevron-down"></i></a>
+                    <ul>
+                        <li><a href="{% url 'faq' %}">All F.A.Q</a></li>
+                        {#                              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>#}
+                        {#                                <ul>#}
+                        {#                                  <li><a href="#">Deep Drop Down 1</a></li>#}
+                        {#                                </ul>#}
+                        {#                              </li>#}
+                    </ul>
+                </li>
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav><!-- .navbar -->
@@ -43,12 +44,14 @@
                     </div>
                     <div class="modal-body" style="background: #e4eaed">
                         <div>
-                            <form action="{% url 'make_appointment' %}" method="post" role="form" class="needs-validation">
+                            <form action="{% url 'make_appointment' %}" method="post" role="form"
+                                  class="needs-validation">
                                 {% csrf_token %}
                                 <div class="row">
                                     <div class="col-12  mb-3">
                                         <select class="form-select" name="service" id="service" required>
-                                            <option selected disabled value="" class="text-danger">Select a Service</option>
+                                            <option selected disabled value="" class="text-danger">Select a Service
+                                            </option>
                                             {% for s in services_all_yes %}
                                                 <option value="{{ s.id }}">{{ s.title }}</option>
                                             {% endfor %}
@@ -69,7 +72,8 @@
                                     <div class="col-12 form-group mb-3">
                                         <input type="district" class="form-control" name="district" id="district"
                                                placeholder="Your District Name"
-                                               data-rule="minlen:3" data-msg="Please enter district name correctly" required>
+                                               data-rule="minlen:3" data-msg="Please enter district name correctly"
+                                               required>
                                         <div class="validate"></div>
                                     </div>
                                 </div>

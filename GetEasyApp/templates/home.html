@@ -5,8 +5,8 @@
     <section id="hero" class="d-flex align-items-center"
              style="background:url('/media/{{ image_field }}') top center !important;">
         <div class="container" style="margin-top:60px;">
-            <h1 style="color:white">Welcome to GetEasy Web</h1>
-            <h6 style="color:white">{{ main_title }}</h6>
+            <h1 style="color:white">{{ main_title }}</h1>
+            <h6 style="color:white">{{ advertise_title }}</h6>
             <a href="{% url 'all_services' %}" class="btn-get-started scrollto">View All Services</a>
             {% if messages %}
                 {% for message in messages %}
@@ -77,6 +77,21 @@
         {#        <div id="fb-customer-chat" class="fb-customerchat">#}
         {#        </div>#}
     </section><!-- End About Section -->
+
+    <!-- Start FAQ section -->
+    <section id="faq" class="about">
+        <div class="container-fluid">
+            <div class="section-title">
+                <h2 style="margin-top: -50px">F.A.Q</h2>
+            </div>
+            <div class="row">
+                <div class="col-xl-12 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5"
+                     style="padding-left: 5.5rem!important;padding-right: 5.5rem!important; text-align: justify;margin-top:-75px;">
+                </div>
+            </div>
+        </div>
+
+    </section><!-- End FAQ Section -->
     <style>
         .card {
             transition: border-color 1s, box-shadow 0.5s, background-color 1s;
