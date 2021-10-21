@@ -71,11 +71,11 @@
                 </div>
             </div>
         </div>
-        {#        <div id="fb-root"></div>#}
-        {##}
-        {#        <!-- Your Chat Plugin code -->#}
-        {#        <div id="fb-customer-chat" class="fb-customerchat">#}
-        {#        </div>#}
+        <div id="fb-root"></div>
+
+        <!-- Your Chat Plugin code -->
+        <div id="fb-customer-chat" class="fb-customerchat">
+        </div>
     </section><!-- End About Section -->
 
     <!-- Start FAQ section -->
@@ -87,6 +87,31 @@
             <div class="row">
                 <div class="col-xl-12 col-lg-6 icon-boxes d-flex flex-column align-items-stretch justify-content-center py-5 px-lg-5"
                      style="padding-left: 5.5rem!important;padding-right: 5.5rem!important; text-align: justify;margin-top:-75px;">
+                    <div class="row">
+                        <div class="col-12">
+                            {% for f in faq_all_yes %}
+                                <div class="row">
+                                    <div class="col-1" style="width: 1px!important;">
+                                        <h4>{{ forloop.counter }}. </h4>
+                                    </div>
+                                    <div class="col-11">
+                                        <h4>
+                                            <a class="" data-bs-toggle="collapse"
+                                               href="#collapseExample{{ f.id }}"
+                                               role="button" aria-expanded="True"
+                                               aria-controls="collapseExample{{ f.id }}">
+                                                {% autoescape off %} {{ f.question }} {% endautoescape %}
+                                            </a></h4>
+                                        <div class="collapse" id="collapseExample{{ f.id }}">
+                                            <div class="card card-body">
+                                                <h6>{% autoescape off %} {{ f.answer }} {% endautoescape %}</h6>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -110,24 +135,25 @@
             message_ele.style.display = "none";
         }, 10000);
     </script>
-    {#    <script>#}
-    {#      var chatbox = document.getElementById('fb-customer-chat');#}
-    {#      chatbox.setAttribute("page_id", "107539754800007");#}
-    {#      chatbox.setAttribute("attribution", "biz_inbox");#}
-    {##}
-    {#      window.fbAsyncInit = function() {#}
-    {#        FB.init({#}
-    {#          xfbml            : true,#}
-    {#          version          : 'v12.0'#}
-    {#        });#}
-    {#      };#}
-    {##}
-    {#      (function(d, s, id) {#}
-    {#        var js, fjs = d.getElementsByTagName(s)[0];#}
-    {#        if (d.getElementById(id)) return;#}
-    {#        js = d.createElement(s); js.id = id;#}
-    {#        js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';#}
-    {#        fjs.parentNode.insertBefore(js, fjs);#}
-    {#      }(document, 'script', 'facebook-jssdk'));#}
-    {#    </script>#}
+    <script>
+        var chatbox = document.getElementById('fb-customer-chat');
+        chatbox.setAttribute("page_id", "107539754800007");
+        chatbox.setAttribute("attribution", "biz_inbox");
+
+        window.fbAsyncInit = function () {
+            FB.init({
+                xfbml: true,
+                version: 'v12.0'
+            });
+        };
+
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = 'https://connect.facebook.net/en_US/sdk/xfbml.customerchat.js';
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
 {% endblock %}

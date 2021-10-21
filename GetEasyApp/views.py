@@ -25,6 +25,7 @@ def home(request):
     context['linkedin_link'] = General.objects.get(id=1).linkedin_link
     context['skype_link'] = General.objects.get(id=1).skype_link
     context['services_all_yes'] = Services.objects.all().order_by('service_sequence').filter(home_shown="yes")
+    context['faq_all_yes'] = FAQ.objects.filter(home_shown="yes")
 
     request.session['email'] = context['email']
     request.session['phone'] = context['phone']
