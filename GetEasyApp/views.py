@@ -110,5 +110,6 @@ def faq(request):
     page = "faq"
     context = {}
     context['faq_all'] = FAQ.objects.all()
+    context['services_all_yes'] = Services.objects.all().order_by('service_sequence').filter(home_shown="yes")
 
     return render(request, page + ".html", context)
