@@ -14,10 +14,10 @@
                 <li><a class="nav-link scrollto" href="{% url 'home' %}#services">Current Services</a></li>
                 <li><a class="nav-link scrollto {% if 'all_services' in request.path %} active {% endif %}"
                        href="{% url 'all_services' %}">All Services</a></li>
-                <li class="dropdown"><a class="nav-link scrollto {% if 'faq' in request.path %} active {% endif %} " href="{% url 'home' %}#faq"><span>F.A.Q</span> <i
+                <li class="dropdown"><a class="nav-link scrollto {% if 'faq' in request.path %} active {% endif %} " href="{% url 'home' %}#faq"><span>FAQ</span> <i
                         class="bi bi-chevron-down"></i></a>
                     <ul>
-                        <li><a href="{% url 'faq' %}">All F.A.Q</a></li>
+                        <li><a href="{% url 'faq' %}">All FAQ</a></li>
                         {#                              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>#}
                         {#                                <ul>#}
                         {#                                  <li><a href="#">Deep Drop Down 1</a></li>#}
