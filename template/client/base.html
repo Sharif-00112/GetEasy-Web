@@ -47,8 +47,8 @@
 <main id="main">
     {% include 'client/nav.html' %}
 
-    {% block content %} {% endblock %}
-    <div id="fb-root"></div>
+    {% block content %}
+        <div id="fb-root"></div>
 
     <!-- Your Chat Plugin code -->
     <div id="fb-customer-chat" class="fb-customerchat">
@@ -74,6 +74,7 @@
             fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
     </script>
+    {% endblock %}
 </main>
 
 {% include 'client/footer.html' %}
