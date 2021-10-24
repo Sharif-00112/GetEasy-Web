@@ -85,7 +85,7 @@ class GetService(models.Model):
     client_name = models.CharField(max_length=300, verbose_name="Enter Your name")
     phone_no = models.CharField(max_length=300, verbose_name="Enter your phone number")
     district = models.CharField(max_length=300, verbose_name="Enter your district")
-    message = RichTextField(verbose_name="Enter your message (if any)", null=True, blank=True)
+    message = models.TextField(verbose_name="Enter your message (if any)", null=True, blank=True)
     ctime = models.DateTimeField()
     status = models.CharField(max_length=100, verbose_name="Services Status", choices=GET_SERVICE_CHOICES)
 

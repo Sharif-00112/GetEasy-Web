@@ -99,10 +99,10 @@ def make_appointment(request):
         message = request.POST['message']
         service_id = request.POST['service']
         service = Services.objects.get(id=service_id)
-
+        ctime = datetime.datetime.now()
+        status = 'Pending'
         get_sr = GetService.objects.create(service=service, client_name=client_name, phone_no=phone_no,
-                                           district=district,
-                                           message=message)
+                                           district=district, message=message, ctime=ctime, status=status)
         if get_sr:
             messages.success(request, "Your Appointment Submitted Successfully. "
                                       "GetEasyWeb contact with you soon! Thanks for using GetEasyWeb.")
