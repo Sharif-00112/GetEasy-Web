@@ -1,3 +1,5 @@
+import datetime
+
 from django.core.cache import cache
 from django.shortcuts import render, redirect
 from django.contrib import messages
@@ -59,10 +61,11 @@ def getservices(request, sid):
         district = request.POST['district']
         message = request.POST['message']
         service = Services.objects.get(id=sid)
+        ctime = datetime.datetime.now()
+        status = 'Pending'
 
         get_sr = GetService.objects.create(service=service, client_name=client_name, phone_no=phone_no,
-                                           district=district,
-                                           message=message)
+                                           district=district, message=message, ctime=ctime, status=status)
         if get_sr:
             messages.success(request, "Your Appointment Submitted Successfully. "
                                       "GetEasyWeb contact with you soon! Thanks for using GetEasyWeb.")
