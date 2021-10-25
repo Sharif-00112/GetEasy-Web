@@ -17,8 +17,24 @@ admin.site.site_title = "GetEasyService"
 
 
 class GeneralAdmin(admin.ModelAdmin):
-    list_display = ['main_title', 'last_edited']
-    actions = None
+    list_display = ['main_title', 'last_edited', 'mode']
+
+    @admin.action(description='Change Mode')
+    def mode_button(self, request, queryset):
+        if queryset.filter(mode='1'):
+            updated_mode = queryset.update(mode='2')
+        else:
+            updated_mode = queryset.update(mode='1')
+        self.message_user(request, ngettext(
+            '%d mode was successfully changed',
+            '%d mode was successfully changed .',
+            updated_mode,
+        ) % updated_mode, messages.SUCCESS)
+
+    actions = [mode_button]
+
+    def has_delete_permission(self, request, obj=None):
+        return False
 
 
 admin.site.register(General, GeneralAdmin)

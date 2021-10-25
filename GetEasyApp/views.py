@@ -11,7 +11,7 @@ from GetEasyApp.models import General, Services, GetService, FAQ
 def home(request):
     page = "home"
     context = {}
-    try:
+    if General.objects.filter(mode='1').exists():
         context['home_details'] = General.objects.all()
         context['main_title'] = General.objects.get(id=1).main_title
         context['advertise_title'] = General.objects.get(id=1).advertise_title
@@ -42,9 +42,8 @@ def home(request):
         request.session['linkedin_link'] = context['linkedin_link']
         request.session['terms'] = context['terms']
         request.session['policy'] = context['policy']
-
         return render(request, page + ".html", context)
-    except General.DoesNotExist:
+    else:
         return render(request, "missing_general.html")
 
 
@@ -57,42 +56,48 @@ def home(request):
 def getservices(request, sid):
     page = "getservicesclient"
     context = {}
-    context['service_get'] = Services.objects.filter(id=sid)
+    if General.objects.filter(mode='1').exists():
+        context['service_get'] = Services.objects.filter(id=sid)
+        if request.method == 'POST':
+            client_name = request.POST['name']
+            phone_no = request.POST['phone']
+            district = request.POST['district']
+            message = request.POST['message']
+            service = Services.objects.get(id=sid)
+            ctime = datetime.datetime.now()
+            status = 'Pending'
 
-    if request.method == 'POST':
-        client_name = request.POST['name']
-        phone_no = request.POST['phone']
-        district = request.POST['district']
-        message = request.POST['message']
-        service = Services.objects.get(id=sid)
-        ctime = datetime.datetime.now()
-        status = 'Pending'
-
-        get_sr = GetService.objects.create(service=service, client_name=client_name, phone_no=phone_no,
-                                           district=district, message=message, ctime=ctime, status=status)
-        if get_sr:
-            messages.success(request, "Your Appointment Submitted Successfully. "
-                                      "GetEasyWeb contact with you soon! Thanks for using GetEasyWeb.")
-        return render(request, page + '.html')
-    return render(request, page + ".html", context)
+            get_sr = GetService.objects.create(service=service, client_name=client_name, phone_no=phone_no,
+                                               district=district, message=message, ctime=ctime, status=status)
+            if get_sr:
+                messages.success(request, "Your Appointment Submitted Successfully. "
+                                          "GetEasyWeb contact with you soon! Thanks for using GetEasyWeb.")
+            return render(request, page + '.html')
+        return render(request, page + ".html", context)
+    else:
+        return render(request, "missing_general.html")
 
 
 def all_services(request):
     page = 'all_services'
-
     context = {}
-    context['services_all_yes'] = Services.objects.all().order_by('service_sequence').filter(home_shown="yes")
-    context['services_all'] = Services.objects.all().order_by('service_sequence')
-    return render(request, page + ".html", context)
+    if General.objects.filter(mode='1').exists():
+        context['services_all_yes'] = Services.objects.all().order_by('service_sequence').filter(home_shown="yes")
+        context['services_all'] = Services.objects.all().order_by('service_sequence')
+        return render(request, page + ".html", context)
+    else:
+        return render(request, "missing_general.html")
 
 
 def service_details(request, sid):
     page = 'service_details'
-
     context = {}
-    context['service'] = Services.objects.get(id=sid)
-    context['services_all_yes'] = Services.objects.all().order_by('service_sequence').filter(home_shown="yes")
-    return render(request, page + ".html", context)
+    if General.objects.filter(mode='1').exists():
+        context['service'] = Services.objects.get(id=sid)
+        context['services_all_yes'] = Services.objects.all().order_by('service_sequence').filter(home_shown="yes")
+        return render(request, page + ".html", context)
+    else:
+        return render(request, "missing_general.html")
 
 
 def make_appointment(request):
@@ -117,7 +122,9 @@ def make_appointment(request):
 def faq(request):
     page = "faq"
     context = {}
-    context['faq_all'] = FAQ.objects.all()
-    context['services_all_yes'] = Services.objects.all().order_by('service_sequence').filter(home_shown="yes")
-
-    return render(request, page + ".html", context)
+    if General.objects.filter(mode='1').exists():
+        context['faq_all'] = FAQ.objects.all()
+        context['services_all_yes'] = Services.objects.all().order_by('service_sequence').filter(home_shown="yes")
+        return render(request, page + ".html", context)
+    else:
+        return render(request, "missing_general.html")
