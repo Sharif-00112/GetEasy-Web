@@ -9,7 +9,6 @@ from django.db import models
 
 # Create your models here.
 
-
 class General(models.Model):
     main_title = models.CharField(max_length=300, verbose_name="Main Title")
     advertise_title = models.CharField(max_length=300, verbose_name="Advertisement Title")
@@ -36,6 +35,9 @@ class General(models.Model):
                                      help_text="remove 'http://' before your web address, Example: example.com")
     skype_link = models.CharField(max_length=300, verbose_name="Skype Link",
                                   help_text="remove 'http://' before your web address, Example: example.com")
+
+    mode = models.CharField(max_length=100, verbose_name="Select Mode",
+                            choices=(('1', 'production'), ('2', 'development')))
 
     def save(self, **kwargs):
         self.pk = self.id = 1
@@ -85,7 +87,7 @@ class GetService(models.Model):
     client_name = models.CharField(max_length=300, verbose_name="Enter Your name")
     phone_no = models.CharField(max_length=300, verbose_name="Enter your phone number")
     district = models.CharField(max_length=300, verbose_name="Enter your district")
-    message = RichTextField(verbose_name="Enter your message (if any)", null=True, blank=True)
+    message = models.TextField(verbose_name="Enter your message (if any)", null=True, blank=True)
     ctime = models.DateTimeField()
     status = models.CharField(max_length=100, verbose_name="Services Status", choices=GET_SERVICE_CHOICES)
 
