@@ -7,7 +7,7 @@
         <div class="container" style="margin-top:60px;">
             <h1 class="text-center" style="color:white">{{ main_title }}</h1>
             <h6 class="text-center" style="color:white">{{ advertise_title }}</h6>
-            <a href="{% url 'all_services' %}" class="btn-get-started scrollto">View All Services</a>
+            <div class="text-center"><a href="{% url 'all_services' %}" class="btn-get-started">View All Services</a></div>
             {% if messages %}
                 {% for message in messages %}
                     <div id="message_container"
