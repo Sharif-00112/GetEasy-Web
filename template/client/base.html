@@ -42,7 +42,6 @@
             integrity="sha256-u7e5khyithlIdTpu22PHhENmPcRdFiHRjhAuHcs05RI=" crossorigin="anonymous"></script>
 
 </head>
-{% include 'client/header.html' %}
 <body>
 <div id="fb-root">
     <script>
@@ -70,6 +69,7 @@
 <!-- Your Chat Plugin code -->
 <div id="fb-customer-chat" class="fb-customerchat">
 </div>
+{% include 'client/header.html' %}
 <main id="main">
     {% include 'client/nav.html' %}
 
